@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Introduction</title>
+</head>
+<body>
+  <input type="text" placeholder="Enter Your name... " id="t1">
+  <button onclick="Display()">Click Me</button>
+  <p id="p1"></p>
+  <script>
+    function Display(){
+      let name = document.querySelector("#t1").value;
+      let promise = fetch("https://api.agify.io?name="+name);
+      promise.then(
+        (response) => {
+          return response.json();
+
+        }
+      )
+      .then(
+        (data) =>{
+          document.querySelector("#p1").innerHTML = data.age;
+        }
+      )
+    }
+  </script>
+  
+</body>
+</html>
